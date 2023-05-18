@@ -6,10 +6,10 @@ require('dotenv').config();
 // Authorization middleware. When used, the Access Token must
 // exist and be verified against the Auth0 JSON Web Key Set.
 const checkJwt = auth({
-  audience: 'https://backend1.com',
-  issuerBaseURL: 'https://luting47.us.auth0.com',
+  audience: 'INSERT YOUR API IDENTIFIER FROM AUTH0',    // To fill
+  issuerBaseURL: 'INSERT YOUR AUTH0 DOMAIN',            // To fill
   tokenSigningAlg: 'HS256',
-  secret: process.env.SECRET          //Add your API's signing secret to the .env file
+  secret: process.env.SECRET                            // Add your API's signing secret to the .env file
 });
 
 // For local testing purposes
@@ -44,6 +44,7 @@ app.get('/api/private-scoped', checkJwt, checkScopes, function(req, res) {
   });
 });
 
+// Runs on port 3001 by default
 app.listen(3001, function() {
   console.log('Listening on http://localhost:3001');
 });
